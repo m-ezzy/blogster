@@ -1,0 +1,13 @@
+.bg-primary, btn-primary {
+  background-color: rgb(255, 246, 121);
+}
+.navbar-nav {
+  display: flex;
+  margin-left: auto;
+}
+.nav-link {
+  color: rgb(255, 255, 255);
+}
+.category {
+  background-color: rgb(255, 246, 121);
+}

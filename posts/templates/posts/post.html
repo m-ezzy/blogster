@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  <div class="p-4">
+    <h2 class="">A Post</h2>
+
+    {% include "posts/display_one.html" with post=post %}
+
+    <div class="m-4 p-2">
+      <h2 class="">It's Comments</h2>
+      {% for comment in comments %}
+        <div class="media content-section d-block m-2 border p-2">
+          <div class="">{{ comment.content }}</div>
+          <a class="" href="users/{{comment.commentor.id}}">{{ comment.commentor }}</a> |
+          <small class="">{{ comment.created_on | date:"F d, Y" }}</small>
+          <a class="btn btn-outline-danger ml-auto" href="/comments/{{comment.id}}/delete">Delete</a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

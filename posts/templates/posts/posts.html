@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="d-flex mb-4">
+    <h2 class="">My Posts</h2>
+    <a class="ms-auto btn btn-primary" href="posts/create">Create New Post</a>
+  </div>
+  {% include "posts/display_list.html" with posts=posts %}
+{% endblock content %}

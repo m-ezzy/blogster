@@ -1,0 +1,8 @@
+{% load static %}
+{% block content %}
+  <div class="">
+    {% for post in posts %}
+      {% include "posts/display_one.html" with post=post %}
+    {% endfor %}
+  </div>
+{% endblock content %}

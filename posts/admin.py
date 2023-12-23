@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Category, Post, Comment
 
-# admin.site.register(Post)
-admin.site.register(Comment)
+class CategoryAdmin(admin.ModelAdmin):
+  pass
 
 class PostAdmin(admin.ModelAdmin):
   list_display = ('title', 'status','created_on')
@@ -10,8 +10,8 @@ class PostAdmin(admin.ModelAdmin):
   search_fields = ['title', 'content']
   # prepopulated_fields = {'slug': ('title',)}
 
-admin.site.register(Post, PostAdmin)
-
+class CommentAdmin(admin.ModelAdmin):
+  pass
 
 # @admin.register(Comment)
 # class CommentAdmin(admin.ModelAdmin):
@@ -22,3 +22,7 @@ admin.site.register(Post, PostAdmin)
 
 #   def approve_comments(self, request, queryset):
 #     queryset.update(active=True)
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)

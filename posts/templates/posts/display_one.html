@@ -1,0 +1,26 @@
+{% load static %}
+{% block content %}
+  <article class="media content-section d-block mb-4 border">
+    <div class="article-metadata p-2 border-bottom bg-secondary d-flex align-items-center gap-2">
+      <a class="" href="/users/{{post.author}}">{{ post.author }}</a> |
+      <small class="">{{ post.created_on | date:"F d, Y" }}</small>
+      {% if post.author == user %}
+        <span class="article-actions ms-auto d-flex gap-2">
+          <a class="btn btn-primary" href="/posts/{{ post.post_id }}/update">Edit</a>
+          <a class="btn btn-danger" href="/posts/{{ post.post_id }}/delete">Delete</a>
+        </span>
+      {% endif %}
+    </div>
+    <div class="p-2">
+      {% for category in post.categories.all %}
+        <a class="badge rounded-pill bg-primary fs-6 text-decoration-none" href="{% url 'display_category_posts' category.name %}">
+          {{ category.name }}
+        </a>
+      {% endfor %}
+    </div>
+    <div class="media-body p-2">
+      <h2><a class="article-title" href="/posts/{{post.post_id}}">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+  </article>
+{% endblock content %}

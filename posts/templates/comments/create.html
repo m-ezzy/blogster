@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h2>New Post</h2>
-	<form method="post" novalidate>
+	<h2>New Comment</h2>
+	<form method="POST" action="{% url 'comments:create' %}" novalidate>
 		{% csrf_token %}
 		{{ form.as_p }}
-		<input type="submit" value="Save" />
+		<input class="btn btn-primary" type="submit" value="Create" />
 	</form>
 {% endblock content %}

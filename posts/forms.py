@@ -1,12 +1,37 @@
 from django.forms import ModelForm
-from .models import Post
+from .models import Category, Post, Comment
 
-class PostForm(ModelForm):
+class CategoryFilterForm(ModelForm):
+  class Meta:
+    model = Category
+    fields = ['name']
+
+class PostCreateForm(ModelForm):
   class Meta:
     model = Post
-    fields = ['title', 'content', 'author', 'status']
+    fields = ['categories', 'title', 'content', 'status']
 
-class CommentForm(ModelForm):
+class PostEditForm(ModelForm):
   class Meta:
     model = Post
-    fields = ['title', 'content', 'author', 'status']
+    fields = ['categories', 'title', 'content', 'status']
+
+class PostDeleteForm(ModelForm):
+  class Meta:
+    model = Post
+    fields = ['categories', 'title', 'content', 'status']
+
+class CommentCreateForm(ModelForm):
+  class Meta:
+    model = Comment
+    fields = ['content']
+
+class CommentEditForm(ModelForm):
+  class Meta:
+    model = Comment
+    fields = ['content']
+
+class CommentDeleteForm(ModelForm):
+  class Meta:
+    model = Comment
+    fields = ['content']

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="d-flex mb-4">
+    <h2 class="">My Comments</h2>
+  </div>
+  <div class="">
+    {% for comment in comments %}
+      <div class="media content-section mb-2 border p-2">
+        <div class="">{{ comment.content }}</div>
+        <div class="border-top p-1 d-flex gap-2 align-items-center">
+          <a class="" href="posts/{{comment.post.id}}">{{ comment.post }}</a> |
+          <a class="" href="users/{{comment.commentor.id}}">{{ comment.commentor }}</a> |
+          <small class="">{{ comment.created_on | date:"F d, Y" }}</small>
+          {% comment %} <a class="btn btn-outline-danger ml-auto" href="comments/{{comment.comment_id}}/delete">Delete</a> {% endcomment %}
+          {% include 'comments/delete.html' %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

@@ -1,0 +1,9 @@
+{% if user.is_authenticated and user == comment.commentor %}
+  <span class="d-flex gap-2 ms-auto">
+    <a class="btn btn-primary" href="{% url 'edit_comment' pk=comment.comment_id %}">Edit</a>
+    <form class="form" method="POST" action="{% url 'delete_comment' pk=comment.comment_id %}">
+      {% csrf_token %}
+      <input class="btn btn-danger" type="submit" value="Delete" />
+    </form>
+  </span>
+{% endif %}

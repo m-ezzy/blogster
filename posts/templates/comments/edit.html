@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h2 class="m-4">Edit Post</h2>
-	<form class="form m-4 border p-2" method="POST" action="{% url 'update_post' pk=form.instance.post_id %}">
+	<h2 class="m-4">Edit Comment</h2>
+	<form class="form m-4 border p-2" method="POST" action="{% url 'edit_comment' pk=form.instance.comment_id %}">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<input class="btn btn-primary" type="submit" value="Update" />
