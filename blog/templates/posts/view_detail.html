@@ -9,10 +9,10 @@
 
       {% if user.is_authenticated and user == post.author %}
         <span class="article-actions ms-auto d-flex gap-2">
-          <a class="btn btn-primary" href="{% url 'edit_post' pk=post.post_id %}">Edit</a>
+          <a class="btn btn-primary" href="{% url 'edit_post' pk=post.id %}">Edit</a>
 
-          {% comment %} <a class="btn btn-danger" href="/posts/{{ post.post_id }}/delete">Delete</a> {% endcomment %}
-          <form method="POST" action="{% url 'delete_post' pk=post.post_id %}">
+          {% comment %} <a class="btn btn-danger" href="/posts/{{ post.id }}/delete">Delete</a> {% endcomment %}
+          <form method="POST" action="{% url 'delete_post' pk=post.id %}">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-danger" type="submit">Delete</button>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="media-body p-2">
-      <h2><a class="article-title" href="{% url 'display_post' post.post_id %}">{{ post.title }}</a></h2>
+      <h2><a class="article-title" href="{% url 'display_post' post.id %}">{{ post.title }}</a></h2>
       <p class="article-content">{{ post.content }}</p>
     </div>
 

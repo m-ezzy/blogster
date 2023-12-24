@@ -17,7 +17,7 @@ from django.db import models
 #####################################################################################################################################
 
 class Category(models.Model):
-  category_id = models.BigAutoField(primary_key=True)
+  # category_id = models.BigAutoField(primary_key=True)
   name = models.CharField(max_length=50)
 
   def __str__(self):
@@ -31,7 +31,7 @@ STATUS = (
 )
 
 class Post(models.Model):
-  post_id = models.BigAutoField(primary_key=True)
+  # post_id = models.BigAutoField(primary_key=True)
   author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts',default=1)
   categories = models.ManyToManyField(Category, related_name="posts")
   title = models.CharField(max_length=200, unique=True)
@@ -50,7 +50,7 @@ class Post(models.Model):
 #####################################################################################################################################
 
 class Comment(models.Model):
-  comment_id = models.BigAutoField(primary_key=True)
+  # comment_id = models.BigAutoField(primary_key=True)
   commentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments',default=1)
   post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments',default=1)
   content = models.TextField(max_length=500)

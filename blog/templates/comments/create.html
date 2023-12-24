@@ -2,7 +2,7 @@
 	{% if user.is_authenticated %}
     <form method="POST" action="{% url 'create_comment' %}" class="d-flex mb-2 border p-2 align-items-center">
     	{% csrf_token %}
-      <input type="hidden" name="post_id" value="{{ post.post_id }}" />
+      <input type="hidden" name="post_id" value="{{ post.id }}" />
 		  {{ form.as_p }}
   	  <input class="btn btn-primary ms-auto" type="submit" value="Create Comment" />
     </form>

@@ -4,7 +4,7 @@
 
     <div class="bg-secondary border-top p-1 d-flex gap-2 align-items-center">
       {% if show_post %}
-        on <a class="link-light" href="{% url 'display_post' comment.post.post_id %}">{{ comment.post }}</a> |
+        on <a class="link-light" href="{% url 'display_post' comment.post.id %}">{{ comment.post }}</a> |
       {% endif %}
 
       {% if show_user %}
@@ -13,11 +13,11 @@
 
       <small class="fw-light">{{ comment.created_on | date:"F d, Y" }}</small>
 
-      {% comment %} <a class="btn btn-outline-danger ml-auto" href="comments/{{comment.comment_id}}/delete">Delete</a> {% endcomment %}
+      {% comment %} <a class="btn btn-outline-danger ml-auto" href="comments/{{comment.id}}/delete">Delete</a> {% endcomment %}
       {% if user.is_authenticated and user == comment.commentor %}
         <span class="d-flex gap-2 ms-auto">
-          <a class="btn btn-primary" href="{% url 'edit_comment' pk=comment.comment_id %}">Edit</a>
-          <form class="form" method="POST" action="{% url 'delete_comment' pk=comment.comment_id %}">
+          <a class="btn btn-primary" href="{% url 'edit_comment' pk=comment.id %}">Edit</a>
+          <form class="form" method="POST" action="{% url 'delete_comment' pk=comment.id %}">
             {% csrf_token %}
             {{ form.as_p }}
             <input class="btn btn-danger" type="submit" value="Delete" />
