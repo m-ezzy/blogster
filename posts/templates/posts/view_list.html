@@ -1,0 +1,11 @@
+{% block content %}
+  <div class="list">
+    {% if posts.count == 0 %}
+      <p>There are no posts yet.</p>
+    {% else %}
+      {% for post in posts %}
+        {% include "posts/view_detail.html" with post=post form=form display_author=display_author %}
+      {% endfor %}
+    {% endif %}
+  </div>
+{% endblock content %}

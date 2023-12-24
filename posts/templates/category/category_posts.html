@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">All the Posts with category <span class="badge rounded-pill bg-primary fs-2">{{ category_name }}</span></h2>
+  {% include "posts/view_list.html" with posts=posts form=forms.post_delete %}
+{% endblock content %}

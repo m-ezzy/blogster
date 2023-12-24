@@ -1,8 +1,7 @@
-"""
-URL configuration for blogs project.
+"""library URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,14 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path, include
+from .views import user_login, user_logout
 
-# app_name = 'blogs'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('posts.urls')), # posts blogs
-    path('', include('users.urls')),
-    path('accounts/', include('users.urls')),
-    # path('login', user_login),
-    # path('logout', user_logout),
+  path('login/', user_login, name='user_login'),
+  path('logout/', user_logout, name='user_logout'),
+  path('account/', include('django.contrib.auth.urls')),
 ]

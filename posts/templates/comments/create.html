@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
 {% block content %}
-	<h2>New Comment</h2>
-	<form method="POST" action="{% url 'comments:create' %}" novalidate>
-		{% csrf_token %}
-		{{ form.as_p }}
-		<input class="btn btn-primary" type="submit" value="Create" />
-	</form>
+	{% if user.is_authenticated %}
+    <form method="POST" action="{% url 'create_comment' %}" class="d-flex mb-2 border p-2 align-items-center">
+    	{% csrf_token %}
+      <input type="hidden" name="post_id" value="{{ post.post_id }}" />
+		  {{ form.as_p }}
+  	  <input class="btn btn-primary ms-auto" type="submit" value="Create Comment" />
+    </form>
+  {% endif %}
 {% endblock content %}

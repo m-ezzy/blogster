@@ -1,22 +1,12 @@
 {% extends "base.html" %}
-{% load static %}
 {% block content %}
+  <h2 class="">A Post</h2>
+
+  {% include "posts/view_detail.html" with post=post form=forms.post_delete display_author=True %}
 
   <div class="p-4">
-    <h2 class="">A Post</h2>
-
-    {% include "posts/display_one.html" with post=post %}
-
-    <div class="m-4 p-2">
-      <h2 class="">It's Comments</h2>
-      {% for comment in comments %}
-        <div class="media content-section d-block m-2 border p-2">
-          <div class="">{{ comment.content }}</div>
-          <a class="" href="users/{{comment.commentor.id}}">{{ comment.commentor }}</a> |
-          <small class="">{{ comment.created_on | date:"F d, Y" }}</small>
-          <a class="btn btn-outline-danger ml-auto" href="/comments/{{comment.id}}/delete">Delete</a>
-        </div>
-      {% endfor %}
-    </div>
+    <h2 class="">It's Comments</h2>
+    {% include "comments/create.html" with form=forms.comment_create post=post %}
+    {% include "comments/view_list.html" with comments=comments show_user=True show_post=False %}
   </div>
 {% endblock content %}

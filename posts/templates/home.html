@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% load static %}
 {% block content %}
-  <div class="d-flex mb-4">
+  <div class="d-flex flex-wrap mb-4 align-items-center">
     <h2 class="">All the Posts by all the users</h2>
-    <span class="ms-auto">
+    <div class="ms-auto">
       {% for category in categories %}
-        <a href="/category/{{category.name}}" class="badge rounded-pill bg-primary fs-6 text-decoration-none">{{ category.name }}</a>
+        {% comment %} <a href="/category/{{category.name}}" class="badge rounded-pill bg-primary fs-6 text-decoration-none">{{ category.name }}</a> {% endcomment %}
+        <a href="{% url 'display_category_posts' category.name %}" class="badge rounded-pill bg-primary fs-6 text-decoration-none">{{ category.name }}</a>
       {% endfor %}
-    </span>
+    </div>
   </div>
-  {% include "posts/display_list.html" with posts=posts %}
+  {% include "posts/view_list.html" with posts=posts form=forms.post_delete display_author=True %}
 {% endblock content %}

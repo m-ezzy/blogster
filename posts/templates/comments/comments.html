@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="mb-4">My Comments</h2>
+
+  {% include "comments/view_list.html" with comments=comments form=form show_user=False show_post=True %}
+
+{% endblock content %}

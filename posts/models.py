@@ -2,15 +2,19 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import models
 
-class Profile(models.Model):
-  profile_id = models.BigAutoField(primary_key=True)
-  user = models.OneToOneField(User, on_delete=models.CASCADE)
-  name = models.CharField(max_length=80)
-  email = models.EmailField()
-  # image = models.ImageField(default="default.png", upload_to="profile_pics")
+#####################################################################################################################################
 
-  def __str__(self):
-    return f"{self.user.username} Profile"
+# class Profile(models.Model):
+#   profile_id = models.BigAutoField(primary_key=True)
+#   user = models.OneToOneField(User, on_delete=models.CASCADE)
+#   name = models.CharField(max_length=80)
+#   email = models.EmailField()
+#   # image = models.ImageField(default="default.png", upload_to="profile_pics")
+
+#   def __str__(self):
+#     return f"{self.user.username} Profile"
+
+#####################################################################################################################################
 
 class Category(models.Model):
   category_id = models.BigAutoField(primary_key=True)
@@ -18,6 +22,8 @@ class Category(models.Model):
 
   def __str__(self):
     return self.name
+
+#####################################################################################################################################
 
 STATUS = (
   (0, "Draft"),
@@ -41,6 +47,8 @@ class Post(models.Model):
   def __str__(self):
     return self.title
 
+#####################################################################################################################################
+
 class Comment(models.Model):
   comment_id = models.BigAutoField(primary_key=True)
   commentor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments',default=1)
@@ -55,3 +63,5 @@ class Comment(models.Model):
   def __str__(self):
     # return 'Comment {} by {}'.format(self.content, self.commentor)
     return f"{self.commentor} on '{self.post}'"
+
+#####################################################################################################################################
