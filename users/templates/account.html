@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="d-flex mb-4">
+    <h2 class="">Account</h2>
+    
+    <span class="ms-auto d-flex gap-2 align-items-center">
+      <a class="btn btn-primary" href="{% url 'edit_user' user.id %}">Edit</a>
+      <form method="POST" action="{% url 'delete_user' user.id %}">
+        {% csrf_token %}
+        {% comment %} {{ form.as_p }} {% endcomment %}
+        <button class="btn btn-danger" type="submit">Delete</button>
+      </form>
+    </span>
+  </div>
+
+  <div class="border p-2">
+    <div>{{ user.id }}</div>
+    <div>{{ user.username }}</div>
+    <div>{{ user.email }}</div>
+    <div>{{ user.first_name }}</div>
+    <div>{{ user.last_name }}</div>
+    <div>{{ user.date_joined }}</div>
+    <div>{{ user.last_login }}</div>
+    <div>{{ user.is_active }}</div>
+    <div>{{ user.is_staff }}</div>
+    <div>{{ user.is_superuser }}</div>
+    <div>{{ user.groups }}</div>
+    <div>{{ user.user_permissions }}</div>
+    <div>{{ user.password }}</div>
+  </div>
+
+  <form action="{% url 'logout_user' %}" method="POST" class="mt-4">
+    {% csrf_token %}
+    <input type="submit" value="Logout" class="btn btn-danger">
+  </form>
+{% endblock content %}

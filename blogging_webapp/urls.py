@@ -20,9 +20,9 @@ from django.urls import include, path
 # app_name = 'blogs'
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('', include("django.contrib.auth.urls")),
     path('', include('blog.urls')), # posts blogs
     path('', include('users.urls')),
-    path('accounts/', include('users.urls')),
     # path('login', user_login),
     # path('logout', user_logout),
 ]

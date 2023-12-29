@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-yn&kqa9ot@!gg9&feccg0gqd5l54l-)a@4-(^2cqaa6x74l*za
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # "127.0.0.1:8000",
+]
 
 
 # Application definition
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'blogging_webapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates', 'blogging_webapp/templates', 'blogging_webapp/blogging_webapp/templates', 'blogging_webapp/blog/templates', 'blogging_webapp/users/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +127,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# url to redirect to login by @login_required decorator
+LOGIN_URL = "/login"

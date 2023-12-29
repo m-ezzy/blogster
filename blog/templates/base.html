@@ -15,26 +15,28 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
   </head>
   <body class="bg-dark text-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-2">
-      <a class="navbar-brand fs-4" href="{% url 'home' %}">Blogging</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account">Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'display_posts' %}">Posts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'display_comments' %}">Comments</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark border-body bg-primary p-2">
+      <div class="container-fluid">
+        <a class="navbar-brand fs-5" href="{% url 'home' %}">Blogging</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account' %}">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'display_posts' %}">Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'display_comments' %}">Comments</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -45,7 +47,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-3 bg-grey">
+    <footer class="py-2 bg-grey">
       <p class="m-0 text-dark text-center ">Copyright &copy; Umbrella Corp.</p>
     </footer>
   </body>

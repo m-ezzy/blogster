@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Login</h2>
+  <form method="POST" action="{% url 'login_user' %}" class="form border p-2">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% comment %} <label for="username">Username:</label>
+    <input type="text" name="username" required class="form-control">
+    <label for="password">Password:</label>
+    <input type="password" name="password" required class="form-control"> {% endcomment %}
+    <input type="submit" value="Login" class="btn btn-primary">
+  </form>
+  <p>Don't have an account? <a href="{% url 'create_user' %}">Signup</a></p>
+{% endblock %}

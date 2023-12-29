@@ -28,13 +28,14 @@ def home(request):
 @login_required
 def display_posts(request):
   # only posts created by logged in user should be displayed
-  context = {
-    "posts": {
-      "published": Post.objects.filter(author=request.user, status=1),
-      "draft": Post.objects.filter(author=request.user, status=0),
+  if request.method == 'GET':
+    context = {
+      "posts": {
+        "published": Post.objects.filter(author=request.user, status=1),
+        "draft": Post.objects.filter(author=request.user, status=0),
+      }
     }
-  }
-  return render(request, 'posts/posts.html', context)
+    return render(request, 'posts/posts.html', context)
 
 def display_post(request, pk):
   post = Post.objects.get(pk=pk)
@@ -103,11 +104,12 @@ def delete_post(request, pk):
 @login_required
 def display_comments(request):
   # display all the comments created by logged in user
-  context = {
-    "comments": Comment.objects.filter(commentor=request.user),
-    "form": CommentDeleteForm(),
-  }
-  return render(request, 'comments/comments.html', context)
+  if request.method == 'GET':
+    context = {
+      "comments": Comment.objects.filter(commentor=request.user),
+      "form": CommentDeleteForm(),
+    }
+    return render(request, 'comments/comments.html', context)
 
 @login_required
 def create_comment(request):
@@ -176,8 +178,10 @@ def display_filter_posts(request):
   elif request.method == 'POST':
     form = CategoryFilterForm(request.POST)
     if form.is_valid():
-      category = form.cleaned_data['category']
-      posts = Post.objects.filter(categories__name__contains=category)
+      # category = form.cleaned_data['category']
+      categories = form.fields['categories']
+      posts = Post.objects.filter(field__in=categories)
+      # categories__name__contains=category)
       # context = {
         # "posts": posts,
         # "categories": Category.objects.all()
@@ -197,14 +201,5 @@ def display_filter_posts(request):
       # return render(request, 'home.html', context)
       # return redirect(f"/category/{category}")
       return redirect("/")
-
-#####################################################################################################################################
-
-def display_user(request, pk):
-  user = User.objects.get(pk=pk)
-  context = {
-    "user": user,
-  }
-  return render(request, "users/user.html", context)
 
 #####################################################################################################################################

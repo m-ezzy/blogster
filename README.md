@@ -1,0 +1,1 @@
+This is a blogging website where users can create their own blogs and share them with other users. Users can also comment on other users' blogs. The website is built using Django framework and SQLite database. The website is deployed with Github Codespaces, the link of which is given in the about section of the repository.

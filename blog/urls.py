@@ -19,6 +19,4 @@ urlpatterns = [
   path('comments/<int:pk>/delete', views.delete_comment, name='delete_comment'),
 
   path('category/<str:name>', views.display_category_posts, name='display_category_posts'),
-
-  path('users/<int:pk>', views.display_user, name='display_user'),
 ]

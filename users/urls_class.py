@@ -15,18 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views
-from .views import login_user, logout_user, account, create_user, display_user, edit_user, delete_user
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
-  path('login/', login_user, name='login_user'),
-  path('logout', logout_user, name='logout_user'),
-
-#   path('accounts/profile', account, name='account'),
-  path('account/', account, name='account'),
-
-  path("signup", create_user, name="create_user"), # users/create register signup
-  path('users/<int:id>', display_user, name='display_user'),
-  path('users/<int:id>/edit', edit_user, name='edit_user'),
-  path('users/<int:id>/delete', delete_user, name='delete_user'),
+  path("login/", LoginView.as_view(template_name="users/login.html"), name="login"),
 ]

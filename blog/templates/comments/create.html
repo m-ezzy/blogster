@@ -1,6 +1,6 @@
 {% block content %}
 	{% if user.is_authenticated %}
-    <form method="POST" action="{% url 'create_comment' %}" class="d-flex mb-2 border p-2 align-items-center">
+    <form method="POST" action="{% url 'create_comment' %}" class="mb-2 border p-2 d-flex align-items-center">
     	{% csrf_token %}
       <input type="hidden" name="post_id" value="{{ post.id }}" />
 		  {{ form.as_p }}

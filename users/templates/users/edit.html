@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h2 class="mb-4">Edit User</h2>
+	<form method="POST" action="{% url 'edit_user' form.instance.id %}" class="form border p-2" >
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input class="btn btn-primary" type="submit" value="Update" />
+	</form>
+{% endblock content %}

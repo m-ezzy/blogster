@@ -42,9 +42,13 @@ class CommentCreateForm(ModelForm):
     fields = ['content']
     widgets = {
       'content': TextInput(attrs={
-        'class': 'form-control',
+        'rows': 1,
+        'class': 'form-control h-25',
         'placeholder': 'Leave a comment...'
       }),
+    },
+    labels = {
+      'content': ''
     }
 
 class CommentEditForm(ModelForm):
